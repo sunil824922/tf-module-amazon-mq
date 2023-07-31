@@ -41,4 +41,18 @@ resource "aws_instance" "rabbitmq" {
     encrypted = true
     kms_key_id = var.kms_arn
   }
+  user_data = base64encode(templatefile("${path.module}/userdata.sh", {
+    rabbitmq_appuser_password = "rabbitmq"
+  }))
 }
+
+
+
+
+
+
+
+
+
+
+
